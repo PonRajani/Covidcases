@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".activities.MainActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tool_bar"
+        />
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        tools:openDrawer="start"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <!--// including the front screen layout-&#45;&#45;Extra-->
+        <include layout="@layout/front_screen_layout"/>
+
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/navigation_view"
+            app:menu="@menu/navigation_menu"
+            android:fitsSystemWindows="true"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start" />
+
+
+    </androidx.drawerlayout.widget.DrawerLayout>
+</LinearLayout>
