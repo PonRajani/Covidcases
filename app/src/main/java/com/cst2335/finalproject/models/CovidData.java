@@ -45,7 +45,7 @@ public class CovidData {
     };*/
 
     public CovidData(String province, int caseNumber, String dataBaseId, String date, String country,
-                     String citycode, String status, String lon, String countycode, String lat, String s)
+                     String citycode, String status, String lon, String countycode, String lat, String city)
     {
         this.province = province;
         this.caseNumber = caseNumber;
@@ -57,6 +57,7 @@ public class CovidData {
         this.lon = lon;
         this.countryCode = countycode;
         this.lat = lat;
+        this.city = city;
     }
 /*
     public CovidData() {

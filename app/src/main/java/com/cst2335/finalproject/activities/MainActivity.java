@@ -97,6 +97,9 @@ public class MainActivity extends AppCompatActivity {
                         Log.e("Search ", ""+item.getItemId());
                     case R.id.navigation_view_history_item:
                         Log.e("View History ", ""+item.getItemId());
+                        Intent intent = new Intent(MainActivity.this,StoredActivity.class);
+                        startActivity(intent);
+                        finish();
 
                 }
                 //close navigation
@@ -112,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
                     if (!from_date_edit_text.getText().toString().equals("")){
                         if (!to_date_edit_text.getText().toString().equals("")){
 
-
+                            //save the 3 data in to shared preference
                             MySharedPreferences.save(MainActivity.this,country_edit_text.getText().toString(),from_date_edit_text.getText().toString(),to_date_edit_text.getText().toString());
 
                             Intent intent = new Intent(MainActivity.this,SearchDetailActivity.class);

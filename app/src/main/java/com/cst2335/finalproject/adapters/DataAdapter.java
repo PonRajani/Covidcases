@@ -68,8 +68,9 @@ public class DataAdapter extends BaseAdapter {
             ivSave.setVisibility(View.VISIBLE);
             ivDelete.setVisibility(View.GONE);
         }*/
-        tvDate.setText(convertDate(dataList.get(i).getDate().split("T")[0]));
+        tvDate.setText(convertDate(dataList.get(i).getDate()));
         tvCases.setText(String.valueOf(dataList.get(i).getCaseNumber()));
+/*
         ivSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -81,6 +82,7 @@ public class DataAdapter extends BaseAdapter {
                 }
             }
         });
+*/
 
         ivDelete.setOnClickListener(new View.OnClickListener() {
             @Override
