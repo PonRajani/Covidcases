@@ -77,7 +77,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
        // }
     }
         //Create the new table:
-        /*public boolean saveData(CovidData data) {
+        public boolean saveData(CovidData data) {
             SQLiteDatabase db = this.getWritableDatabase();
             ContentValues values = new ContentValues();
             values.put(COLUMN_PROVINCE, data.getProvince());
@@ -96,7 +96,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             Log.d("theS", "saveData: "+result +" "+values);
             db.close();
             return result != -1;
-        }*/
+        }
     public List<CovidData> getAllData() {
         List<CovidData> dataList = new ArrayList<CovidData>();
         String selectQuery = "SELECT  * FROM " + TABLE_NAME;
@@ -128,5 +128,19 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         //Create the new table:
         onCreate(db);
+    }
+
+    public boolean exists(String date) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String[] columns = { COLUMN_DATE };
+        String selection = COLUMN_DATE + " =?";
+        String[] selectionArgs = { date };
+        String limit = "1";
+
+        Cursor cursor = db.query(COLUMN_DATE, columns, selection, selectionArgs, null, null, null, limit);
+        boolean exists = (cursor.getCount() > 0);
+        Log.d("theS", "exists: "+date +" "+exists);
+        cursor.close();
+        return exists;
     }
 }
