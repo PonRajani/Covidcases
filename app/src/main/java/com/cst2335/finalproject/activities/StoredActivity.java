@@ -3,6 +3,7 @@ package com.cst2335.finalproject.activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ListView;
 import com.cst2335.finalproject.R;
 
@@ -24,10 +25,12 @@ public class StoredActivity extends AppCompatActivity {
 
         databaseHandler = new DatabaseHandler(StoredActivity.this);
 
-      /*  listView = findViewById(R.id.list_view);
+        listView = findViewById(R.id.list_view);
         List<CovidData> dataList = databaseHandler.getAllData();
 
+        Log.e("listlist","-->"+dataList.size());
+
         dataAdapter = new DataAdapter(StoredActivity.this, dataList, true);
-        listView.setAdapter(dataAdapter);*/
+        listView.setAdapter(dataAdapter);
     }
 }
