@@ -31,6 +31,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public static final String COLUMN_DATE = "DATE";
     public final static String COL_ID = "_id";
 
+
+
 /*
     protected final static String DATABASE_NAME = "DATABASE";
     protected final static int VERSION_NUM = 1;
