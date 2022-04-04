@@ -119,16 +119,16 @@ public class SearchDetailActivity extends AppCompatActivity {
 
                 Log.e("covid_api_result",""+result);
 
-                setUpDatabaseOpener();
+               // setUpDatabaseOpener();
                 Thread.sleep(500); // sleep for 500 milli seconds
                 publishProgress(50);  // set the progressbar value
                 for(int databaseid=0; databaseid<covidDataArray.length(); databaseid++){
                     JSONObject covidObject = covidDataArray.getJSONObject(databaseid);
                     String province = covidObject.getString("Province");
-                    String caseNumber = String.valueOf(covidObject.getInt("Cases"));
+                    int caseNumber =covidObject.getInt("Cases");
 
                     String date = covidObject.getString("Date");
-                    String Country = covidObject.getString("Date");
+                    String Country = covidObject.getString("Country");
                     String CityCode = covidObject.getString("CityCode");
                     String Status = covidObject.getString("Status");
                     String Lon = covidObject.getString("Lon");

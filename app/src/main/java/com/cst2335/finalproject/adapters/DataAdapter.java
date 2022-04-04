@@ -61,15 +61,15 @@ public class DataAdapter extends BaseAdapter {
         ImageView ivSave = view.findViewById(R.id.iv_save);
         ImageView ivDelete = view.findViewById(R.id.iv_delete);
 
-        if (databaseHandler.exists(dataList.get(i).getDate())) {
+        /*if (databaseHandler.exists(dataList.get(i).getDate())) {
             ivSave.setVisibility(View.GONE);
             ivDelete.setVisibility(View.VISIBLE);
         } else {
             ivSave.setVisibility(View.VISIBLE);
             ivDelete.setVisibility(View.GONE);
-        }
+        }*/
         tvDate.setText(convertDate(dataList.get(i).getDate().split("T")[0]));
-        tvCases.setText(String.valueOf(dataList.get(i).getCases()));
+        tvCases.setText(String.valueOf(dataList.get(i).getCaseNumber()));
         ivSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -85,7 +85,7 @@ public class DataAdapter extends BaseAdapter {
         ivDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                databaseHandler.deleteData(dataList.get(i));
+               // databaseHandler.deleteData(dataList.get(i));
                 if (isDatabaseValue) {
                     dataList.remove(dataList.get(i));
                 }
@@ -136,7 +136,7 @@ public class DataAdapter extends BaseAdapter {
 
         tvCountry.setText(data.getCountry());
         tvLatLong.setText(data.getLat() + "," + data.getLon());
-        tvCases.setText(String.valueOf(data.getCases()));
+        tvCases.setText(String.valueOf(data.getCaseNumber()));
         tvDate.setText(convertDate(data.getDate().split("T")[0]));
 
         ivClose.setOnClickListener(new View.OnClickListener() {

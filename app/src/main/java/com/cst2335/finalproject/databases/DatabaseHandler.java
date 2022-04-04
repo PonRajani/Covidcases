@@ -90,7 +90,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             db.close();
             return result != -1;
         }
-    public List<CovidData> getAllData() {
+    /*public List<CovidData> getAllData() {
         List<CovidData> dataList = new ArrayList<CovidData>();
         String selectQuery = "SELECT  * FROM " + TABLE_NAME;
         SQLiteDatabase db = this.getWritableDatabase();
@@ -112,7 +112,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             } while (cursor.moveToNext());
         }
         return dataList;
-    }
+    }*/
     @Override
     public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion)  {   //Drop the old table:
         db.execSQL( "DROP TABLE IF EXISTS " + TABLE_NAME);

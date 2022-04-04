@@ -10,26 +10,26 @@ public class CovidData {
     String date;
     String country;
     String dataBaseId;
-    String Citycode;
-    String Status;
-    String Lon;
-    String City;
-    String CountryCode;
-    String Lat;
+    String citycode;
+    String status;
+    String lon;
+    String city;
+    String countryCode;
+    String lat;
     int setcases;
     int getCases;
 
-    public CovidData(Parcel in) {
-        Citycode = in.readString();
-        Status = in.readString();
-        country = in.readString();
-        Lon = in.readString();
-        City = in.readString();
-        CountryCode = in.readString();
-        province = in.readString();
-        Lat = in.readString();
-        caseNumber = in.readInt();
-        date = in.readString();
+    /*public CovidData(String province, int caseNumber,  String date, String country, String cityCode, String status, String lon, String city, String countryCode, String lat) {
+        this.Citycode = cityCode;
+        this.Status = status;
+        this.country = country;
+        this.Lon = lon;
+        this.City = city;
+        this.CountryCode = countryCode;
+        this.province = province;
+        this.Lat = lat;
+        this.caseNumber = caseNumber;
+        this.date = date;
     }
 
     public static final Parcelable.Creator<CovidData> CREATOR = new Parcelable.Creator<CovidData>() {
@@ -42,12 +42,28 @@ public class CovidData {
         public CovidData[] newArray(int size) {
             return new CovidData[size];
         }
-    };
+    };*/
 
-    public CovidData(String province, String caseNumber, String valueOf, String date, String country) {
+    public CovidData(String province, int caseNumber, String dataBaseId, String date, String country,
+                     String citycode, String status, String lon, String countycode, String lat, String s)
+    {
+        this.province = province;
+        this.caseNumber = caseNumber;
+        this.dataBaseId = dataBaseId;
+        this.date = date;
+        this.country = country;
+        this.citycode = citycode;
+        this.status = status;
+        this.lon = lon;
+        this.countryCode = countycode;
+        this.lat = lat;
+    }
+/*
+    public CovidData() {
     }
 
-
+    public CovidData(Parcel in) {
+    }
 
 
     public String getProvince() {
@@ -73,7 +89,6 @@ public class CovidData {
     public void setDate(String date) {
         this.date = date;
     }
-
 
     public String getCountry() {
         return country;
@@ -159,7 +174,7 @@ public class CovidData {
                         ",date = '" + date + '\'' +
                         "}";
     }
-    @Override
+    *//*@Override
         public int describeContents() {
             return 0;
         }
@@ -175,8 +190,112 @@ public class CovidData {
             parcel.writeString(Lat);
             parcel.writeInt(caseNumber);
             parcel.writeString(date);
-        }
+        }*/
+
+    public String getProvince() {
+        return province;
     }
+
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
+    public int getCaseNumber() {
+        return caseNumber;
+    }
+
+    public void setCaseNumber(int caseNumber) {
+        this.caseNumber = caseNumber;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getDataBaseId() {
+        return dataBaseId;
+    }
+
+    public void setDataBaseId(String dataBaseId) {
+        this.dataBaseId = dataBaseId;
+    }
+
+    public String getCitycode() {
+        return citycode;
+    }
+
+    public void setCitycode(String citycode) {
+        this.citycode = citycode;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getLon() {
+        return lon;
+    }
+
+    public void setLon(String lon) {
+        this.lon = lon;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getCountryCode() {
+        return countryCode;
+    }
+
+    public void setCountryCode(String countryCode) {
+        this.countryCode = countryCode;
+    }
+
+    public String getLat() {
+        return lat;
+    }
+
+    public void setLat(String lat) {
+        this.lat = lat;
+    }
+
+    public int getSetcases() {
+        return setcases;
+    }
+
+    public void setSetcases(int setcases) {
+        this.setcases = setcases;
+    }
+
+    public int getGetCases() {
+        return getCases;
+    }
+
+    public void setGetCases(int getCases) {
+        this.getCases = getCases;
+    }
+}
 
 
 
