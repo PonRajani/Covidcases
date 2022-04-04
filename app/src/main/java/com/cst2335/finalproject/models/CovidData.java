@@ -17,54 +17,31 @@ public class CovidData {
     String CountryCode;
     String Lat;
 
-    public CovidData(String province, String caseNumber, String dataBaseId, String date, String country) {
-        this.province = province;
-        this.caseNumber = caseNumber;
-        this.dataBaseId = dataBaseId;
-        this.date = date;
-        this.country = country;
-        this.Citycode = Citycode;
-        this.Status = Status;
-        this.Lon = Lon;
-        this.City = City;
-        this.CountryCode = CountryCode;
-        this.Lat = Lat;
+    public CovidData(Parcel in) {
+        Citycode = in.readString();
+        Status = in.readString();
+        country = in.readString();
+        Lon = in.readString();
+        City = in.readString();
+        CountryCode = in.readString();
+        province = in.readString();
+        Lat = in.readString();
+        caseNumber = in.readInt();
+        date = in.readString();
     }
 
-    @Override
-    public String toString() {
-        return
-                "CovidData{" +
-                        "cityCode = '" + Citycode + '\'' +
-                        ",status = '" + Status + '\'' +
-                        ",country = '" + country + '\'' +
-                        ",lon = '" + Lon + '\'' +
-                        ",city = '" + City + '\'' +
-                        ",countryCode = '" + CountryCode + '\'' +
-                        ",province = '" + province + '\'' +
-                        ",lat = '" + Lat + '\'' +
-                        ",cases = '" + caseNumber + '\'' +
-                        ",dataBaseId = '" + dataBaseId + '\'' +
-                        ",date = '" + date + '\'' +
-                        "}";
-    }
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(Citycode);
-        parcel.writeString(Status);
-        parcel.writeString(country);
-        parcel.writeString(Lon);
-        parcel.writeString(City);
-        parcel.writeString(CountryCode);
-        parcel.writeString(province);
-        parcel.writeString(Lat);
-        parcel.writeInt(caseNumber);
-        parcel.writeString(date);
-    }
+    public static final Parcelable.Creator<CovidData> CREATOR = new Parcelable.Creator<CovidData>() {
+        @Override
+        public CovidData createFromParcel(Parcel in) {
+            return new CovidData(in);
+        }
+
+        @Override
+        public CovidData[] newArray(int size) {
+            return new CovidData[size];
+        }
+    };
+
     public String getProvince() {
         return province;
     }
@@ -129,31 +106,41 @@ public class CovidData {
         this.dataBaseId = dataBaseId;
     }
 
-
-    public CovidData(Parcel in) {
-        Citycode = in.readString();
-        Status = in.readString();
-        country = in.readString();
-        Lon = in.readString();
-        City = in.readString();
-        CountryCode = in.readString();
-        province = in.readString();
-        Lat = in.readString();
-        caseNumber = in.readInt();
-        date = in.readString();
+    @Override
+    public String toString() {
+        return
+                "Data{" +
+                        "cityCode = '" + Citycode + '\'' +
+                        ",status = '" + Status + '\'' +
+                        ",country = '" + country + '\'' +
+                        ",lon = '" + Lon + '\'' +
+                        ",city = '" + City + '\'' +
+                        ",countryCode = '" + CountryCode + '\'' +
+                        ",province = '" + province + '\'' +
+                        ",lat = '" + Lat + '\'' +
+                        ",cases = '" + caseNumber + '\'' +
+                        ",date = '" + date + '\'' +
+                        "}";
+    }
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+        @Override
+        public void writeToParcel (Parcel parcel,int i){
+            parcel.writeString(Citycode);
+            parcel.writeString(Status);
+            parcel.writeString(country);
+            parcel.writeString(Lon);
+            parcel.writeString(City);
+            parcel.writeString(CountryCode);
+            parcel.writeString(province);
+            parcel.writeString(Lat);
+            parcel.writeInt(caseNumber);
+            parcel.writeString(date);
+        }
     }
 
-    public static final Parcelable.Creator<CovidData> CREATOR = new Parcelable.Creator<CovidData>() {
-        @Override
-        public CovidData createFromParcel(Parcel in) {
-            return new CovidData(in);
-        }
-
-        @Override
-        public CovidData[] newArray(int size) {
-            return new CovidData[size];
-        }
-        };
 
 
 
@@ -163,27 +150,5 @@ public class CovidData {
 
 
 
-    /*public CovidData(Parcel in) {
-        cityCode = in.readString();
-        status = in.readString();
-        country = in.readString();
-        lon = in.readString();
-        city = in.readString();
-        countryCode = in.readString();
-        province = in.readString();
-        lat = in.readString();
-        cases = in.readInt();
-        date = in.readString();
-    }*/
-/*
-    public static final Parcelable.Creator<CovidData> CREATOR = new Creator<CovidData>() {
-        @Override
-        public CovidData createFromParcel(Parcel in) {
-            return new CovidData(in);
-        }
 
-        @Override
-        public CovidData[] newArray(int size) {
-            return new CovidData[size];
-        }
-    };*/
+

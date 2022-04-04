@@ -9,6 +9,9 @@ import android.util.Log;
 
 import com.cst2335.finalproject.models.CovidData;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DatabaseHandler extends SQLiteOpenHelper {
 
 
@@ -86,7 +89,29 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             db.close();
             return result != -1;
         }
-
+    public List<CovidData> getAllData() {
+        List<CovidData> dataList = new ArrayList<CovidData>();
+        String selectQuery = "SELECT  * FROM " + TABLE_NAME;
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                CovidData data = new CovidData();
+                data.setDate(cursor.getString(0));
+                data.setCityCode(cursor.getString(1));
+                data.setStatus(cursor.getString(2));
+                data.setCountry(cursor.getString(3));
+                data.setLon(cursor.getString(4));
+                data.setCity(cursor.getString(5));
+                data.setCountryCode(cursor.getString(6));
+                data.setProvince(cursor.getString(7));
+                data.setLon(cursor.getString(8));
+                data.setCases(cursor.getInt(9));
+                dataList.add(data);
+            } while (cursor.moveToNext());
+        }
+        return dataList;
+    }
     @Override
     public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion)  {   //Drop the old table:
         db.execSQL( "DROP TABLE IF EXISTS " + TABLE_NAME);
