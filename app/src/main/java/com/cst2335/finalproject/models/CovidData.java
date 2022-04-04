@@ -17,6 +17,7 @@ public class CovidData {
     String CountryCode;
     String Lat;
     int setcases;
+    int getCases;
 
     public CovidData(Parcel in) {
         Citycode = in.readString();
@@ -120,6 +121,11 @@ public class CovidData {
     public void setCountryCode(String countryCode) {
         CountryCode = countryCode;
     }
+
+    public int getCases() {
+        return getCases;
+    }
+
     public void setCases(int setcases){
         this.setcases=setcases;
 
@@ -153,7 +159,7 @@ public class CovidData {
                         ",date = '" + date + '\'' +
                         "}";
     }
-        @Override
+    @Override
         public int describeContents() {
             return 0;
         }
