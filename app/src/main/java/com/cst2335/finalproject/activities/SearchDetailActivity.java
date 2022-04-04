@@ -119,19 +119,26 @@ public class SearchDetailActivity extends AppCompatActivity {
 
                 Log.e("covid_api_result",""+result);
 
-                setUpDatabaseOpener();
+               // setUpDatabaseOpener();
                 Thread.sleep(500); // sleep for 500 milli seconds
                 publishProgress(50);  // set the progressbar value
                 for(int databaseid=0; databaseid<covidDataArray.length(); databaseid++){
                     JSONObject covidObject = covidDataArray.getJSONObject(databaseid);
                     String province = covidObject.getString("Province");
-                    String caseNumber = String.valueOf(covidObject.getInt("Cases"));
+                    int caseNumber =covidObject.getInt("Cases");
 
                     String date = covidObject.getString("Date");
-                    String Country = covidObject.getString("Date");
+                    String Country = covidObject.getString("Country");
+                    String CityCode = covidObject.getString("CityCode");
+                    String Status = covidObject.getString("Status");
+                    String Lon = covidObject.getString("Lon");
+                    String City = covidObject.getString("City");
+                    String CountryCode = covidObject.getString("CountryCode");
+                    String Lat = covidObject.getString("Lat");
+
 
                     if(!province.trim().isEmpty()) {
-                        CovidData covidData = new CovidData(province, caseNumber,String.valueOf(databaseid),date, Country);
+                        CovidData covidData = new CovidData(province, caseNumber,String.valueOf(databaseid),date, Country,CityCode,Status,Lon,City,CountryCode,Lat);
                         list.add(covidData);
                     }
                 }
