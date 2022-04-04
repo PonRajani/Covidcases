@@ -16,6 +16,7 @@ public class CovidData {
     String City;
     String CountryCode;
     String Lat;
+    int setcases;
 
     public CovidData(Parcel in) {
         Citycode = in.readString();
@@ -46,6 +47,8 @@ public class CovidData {
     }
 
 
+
+
     public String getProvince() {
         return province;
     }
@@ -70,6 +73,7 @@ public class CovidData {
         this.date = date;
     }
 
+
     public String getCountry() {
         return country;
     }
@@ -82,22 +86,45 @@ public class CovidData {
         return Citycode;
     }
 
+    public void setCityCode(String citycode) {
+        Citycode = citycode;
+    }
+
     public String getStatus() {
         return Status;
     }
 
+    public void setStatus(String status){
+        Status = status;
+    }
     public String getLon() {
         return Lon;
+    }
+
+    public void setLon(String lon) {
+        Lon = lon;
     }
 
     public String getCity() {
         return City;
     }
 
+    public void setCity(String city) {
+        City = city;
+    }
+
     public String getCountryCode() {
         return CountryCode;
     }
 
+    public void setCountryCode(String countryCode) {
+        CountryCode = countryCode;
+    }
+    public void setCases(int setcases){
+        this.setcases=setcases;
+
+
+    }
     public String getLat() {
         return Lat;
     }

@@ -138,8 +138,7 @@ public class SearchDetailActivity extends AppCompatActivity {
 
 
                     if(!province.trim().isEmpty()) {
-                        CovidData covidData = new CovidData(province, caseNumber,String.valueOf(databaseid),date,
-                                Country,CityCode,Status,Lon,City,CountryCode,Lat);
+                        CovidData covidData = new CovidData(province, caseNumber,String.valueOf(databaseid),date, Country,CityCode,Status,Lon,City,CountryCode,Lat);
                         list.add(covidData);
                     }
                 }
