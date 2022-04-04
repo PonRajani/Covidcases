@@ -129,9 +129,17 @@ public class SearchDetailActivity extends AppCompatActivity {
 
                     String date = covidObject.getString("Date");
                     String Country = covidObject.getString("Date");
+                    String CityCode = covidObject.getString("CityCode");
+                    String Status = covidObject.getString("Status");
+                    String Lon = covidObject.getString("Lon");
+                    String City = covidObject.getString("City");
+                    String CountryCode = covidObject.getString("CountryCode");
+                    String Lat = covidObject.getString("Lat");
+
 
                     if(!province.trim().isEmpty()) {
-                        CovidData covidData = new CovidData(province, caseNumber,String.valueOf(databaseid),date, Country);
+                        CovidData covidData = new CovidData(province, caseNumber,String.valueOf(databaseid),date,
+                                Country,CityCode,Status,Lon,City,CountryCode,Lat);
                         list.add(covidData);
                     }
                 }

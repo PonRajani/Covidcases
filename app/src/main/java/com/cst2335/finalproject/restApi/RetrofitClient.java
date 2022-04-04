@@ -1,18 +1,18 @@
 package com.cst2335.finalproject.restApi;
 
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
+/*retrofit2import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;*/
 
 public class RetrofitClient {
     private static RetrofitClient instance = null;
     private Api myApi;
 
-    private RetrofitClient() {
+   /* private RetrofitClient() {
         Retrofit retrofit = new Retrofit.Builder().baseUrl(Api.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         myApi = retrofit.create(Api.class);
-    }
+    }*/
 
     public static synchronized RetrofitClient getInstance() {
         if (instance == null) {
