@@ -42,6 +42,10 @@ public class CovidData {
         }
     };
 
+    public CovidData(String province, String caseNumber, String valueOf, String date, String country) {
+    }
+
+
     public String getProvince() {
         return province;
     }
