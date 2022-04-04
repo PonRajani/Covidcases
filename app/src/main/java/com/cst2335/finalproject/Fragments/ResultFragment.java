@@ -10,10 +10,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-
 import com.cst2335.finalproject.R;
-import com.cst2335.finalproject.models.CovidData;
 import com.cst2335.finalproject.adapters.DataAdapter;
+import com.cst2335.finalproject.models.CovidData;
+
 import java.util.List;
 
 public class ResultFragment extends Fragment {

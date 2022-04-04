@@ -12,6 +12,7 @@ import com.cst2335.finalproject.models.CovidData;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class DatabaseHandler extends SQLiteOpenHelper {
 
 

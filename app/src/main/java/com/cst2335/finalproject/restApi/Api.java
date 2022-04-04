@@ -1,6 +1,5 @@
 package com.cst2335.finalproject.restApi;
 
-
 import com.cst2335.finalproject.models.CovidData;
 import java.util.List;
 
