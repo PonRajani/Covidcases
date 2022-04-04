@@ -22,13 +22,14 @@ import android.widget.Toast;
 
 
 import com.cst2335.finalproject.R;
+import com.cst2335.finalproject.preferences.MySharedPreferences;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
     Button search_button;
     EditText country_edit_text, from_date_edit_text, to_date_edit_text;
-    SharedPreferences sharedPreferences;
+    MySharedPreferences sharedPreferences;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -73,12 +74,11 @@ public class MainActivity extends AppCompatActivity {
         country_edit_text=findViewById(R.id.country_edit_text);
         from_date_edit_text=findViewById(R.id.from_date_edit_text);
         to_date_edit_text=findViewById(R.id.to_date_edit_text);
-        sharedPreferences = getSharedPreferences("final_project_pref",MODE_PRIVATE);
 
-        if (!sharedPreferences.getString("country","").equals("")){
-            country_edit_text.setText(sharedPreferences.getString("country",""));
-            from_date_edit_text.setText(sharedPreferences.getString("from_date",""));
-            to_date_edit_text.setText(sharedPreferences.getString("to_date",""));
+        if (!MySharedPreferences.getCountry(this).equals("")){
+            country_edit_text.setText(MySharedPreferences.getCountry(this));
+            from_date_edit_text.setText(MySharedPreferences.getFromDate(this));
+            to_date_edit_text.setText(MySharedPreferences.getToDate(this));
         }
 
         DrawerLayout drawerLayout=findViewById(R.id.drawer_layout);
@@ -97,6 +97,9 @@ public class MainActivity extends AppCompatActivity {
                         Log.e("Search ", ""+item.getItemId());
                     case R.id.navigation_view_history_item:
                         Log.e("View History ", ""+item.getItemId());
+                        Intent intent = new Intent(MainActivity.this,StoredActivity.class);
+                        startActivity(intent);
+                        finish();
 
                 }
                 //close navigation
@@ -112,13 +115,8 @@ public class MainActivity extends AppCompatActivity {
                     if (!from_date_edit_text.getText().toString().equals("")){
                         if (!to_date_edit_text.getText().toString().equals("")){
 
-                            SharedPreferences.Editor myEdit = sharedPreferences.edit();
-
-                            myEdit.putString("country", country_edit_text.getText().toString());
-                            myEdit.putString("from_date", from_date_edit_text.getText().toString());
-                            myEdit.putString("to_date", to_date_edit_text.getText().toString());
-
-                            myEdit.commit();
+                            //save the 3 data in to shared preference
+                            MySharedPreferences.save(MainActivity.this,country_edit_text.getText().toString(),from_date_edit_text.getText().toString(),to_date_edit_text.getText().toString());
 
                             Intent intent = new Intent(MainActivity.this,SearchDetailActivity.class);
                             intent.putExtra("country",country_edit_text.getText().toString());
