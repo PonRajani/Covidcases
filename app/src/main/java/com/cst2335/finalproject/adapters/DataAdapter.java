@@ -61,16 +61,16 @@ public class DataAdapter extends BaseAdapter {
         ImageView ivSave = view.findViewById(R.id.iv_save);
         ImageView ivDelete = view.findViewById(R.id.iv_delete);
 
-        /*if (databaseHandler.exists(dataList.get(i).getDate())) {
+        if (databaseHandler.exists(dataList.get(i).getDate())) {
             ivSave.setVisibility(View.GONE);
             ivDelete.setVisibility(View.VISIBLE);
         } else {
             ivSave.setVisibility(View.VISIBLE);
             ivDelete.setVisibility(View.GONE);
-        }*/
+        }
         tvDate.setText(convertDate(dataList.get(i).getDate()));
         tvCases.setText(String.valueOf(dataList.get(i).getCaseNumber()));
-/*
+
         ivSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -82,7 +82,7 @@ public class DataAdapter extends BaseAdapter {
                 }
             }
         });
-*/
+
 
         ivDelete.setOnClickListener(new View.OnClickListener() {
             @Override
