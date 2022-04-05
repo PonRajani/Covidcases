@@ -18,10 +18,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 
 import com.cst2335.finalproject.R;
+import com.cst2335.finalproject.models.CovidData;
 import com.cst2335.finalproject.preferences.MySharedPreferences;
 import com.google.android.material.navigation.NavigationView;
 
@@ -30,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     Button search_button;
     EditText country_edit_text, from_date_edit_text, to_date_edit_text;
     MySharedPreferences sharedPreferences;
+    ProgressBar progressBar;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
