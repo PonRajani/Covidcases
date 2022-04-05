@@ -12,7 +12,7 @@ import com.cst2335.finalproject.models.CovidData;
 import java.util.ArrayList;
 import java.util.List;
 
-//THIS CLASS EXTENDS SQLITEOPENHELPER
+
 public class DatabaseHandler extends SQLiteOpenHelper {
 
     public static final int DATABASE_VERSION =1 ;
@@ -51,7 +51,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-//CREATE THE TABLE WITH THE SPECIFIED COLUMNS
+
         sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_NAME + " (_id INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + COLUMN_COUNTRY + " text,"
                 + COLUMN_PROVINCE + " text,"
@@ -68,18 +68,16 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-        /*//Drop the old table:
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {   //Drop the old table:
       //  sqLiteDatabase.execSQL( "DROP TABLE IF EXISTS " + TABLE_NAME);
        // if (i != i1) {
-            // Simplest implementation is to drop all old tables and recreate them*/
-
-            sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);//DROP THE TABLE IF EXIST
-            onCreate(sqLiteDatabase);//CREATE SQLITE DATABASE
+            // Simplest implementation is to drop all old tables and recreate them
+            sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+            onCreate(sqLiteDatabase);
        // }
     }
-        /*//Create the new table:
-        /*public boolean saveData(CovidData data) {
+        //Create the new table:
+        public boolean saveData(CovidData data) {
             SQLiteDatabase db = this.getWritableDatabase();
             ContentValues values = new ContentValues();
             values.put(COLUMN_PROVINCE, data.getProvince());
@@ -98,17 +96,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             Log.d("theS", "saveData: "+result +" "+values);
             db.close();
             return result != -1;
-        }*/
-
-    //THIS METHOD RETURN THE LIST OF DATA
+        }
     public List<CovidData> getAllData() {
-        List<CovidData> dataList = new ArrayList<CovidData>();//CREATE NEW LIST OBJECT
-        String selectQuery = "SELECT  * FROM " + TABLE_NAME;//SELECT ALL DATA FROM THE TABLE
+        List<CovidData> dataList = new ArrayList<CovidData>();
+        String selectQuery = "SELECT  * FROM " + TABLE_NAME;
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
         if (cursor.moveToFirst()) {
             do {
-                //CREATE NEW COVID DATA OBJECT
                 CovidData data = new CovidData(cursor.getString(2),cursor.getInt(3),cursor.getString(4),cursor.getString(10),
                         cursor.getString(1),cursor.getString(5),cursor.getString(6),cursor.getString(7),cursor.getString(9),
                         cursor.getString(11),cursor.getString(8));
@@ -122,17 +117,30 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 data.setProvince(cursor.getString(7));
                 data.setLon(cursor.getString(8));
                 data.setCases(cursor.getInt(9));*/
-                dataList.add(data);//ADD THE DATA IN TO DATA LIST
+                dataList.add(data);
             } while (cursor.moveToNext());
         }
-        return dataList;//RETURN THE LIST OF DATA
+        return dataList;
     }
     @Override
-    public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion)  {
-        //DROP THE OLD TABLE
+    public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion)  {   //Drop the old table:
         db.execSQL( "DROP TABLE IF EXISTS " + TABLE_NAME);
 
-        //CREATE DB
+        //Create the new table:
         onCreate(db);
+    }
+
+    public boolean exists(String date) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String[] columns = { COLUMN_DATE };
+        String selection = COLUMN_DATE + " =?";
+        String[] selectionArgs = { date };
+        String limit = "1";
+
+        Cursor cursor = db.query(COLUMN_DATE, columns, selection, selectionArgs, null, null, null, limit);
+        boolean exists = (cursor.getCount() > 0);
+        Log.d("theS", "exists: "+date +" "+exists);
+        cursor.close();
+        return exists;
     }
 }
