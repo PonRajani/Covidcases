@@ -69,8 +69,12 @@ public class SearchDetailActivity extends AppCompatActivity {
 //LONG CLICK FUNCTIONALITY FOR AN ITEM CLICKED
         searchdetail_listview.setOnItemLongClickListener((parent, view, position, id) -> {
             if (framelayout){
-                LoadFragment(new ResultFragment(),((CovidData) list.get(position)).getProvince(),String.valueOf(((CovidData) list.get(position)).getGetCases()),
-                        ((CovidData) list.get(position)).getDate(),((CovidData) list.get(position)).getDataBaseId());
+                Log.e("casees","-->"+list.get(position).getGetCases());
+                LoadFragment(new ResultFragment(),
+                        ((CovidData) list.get(position)).getProvince(),
+                        String.valueOf(((CovidData) list.get(position)).getCaseNumber()),
+                        ((CovidData) list.get(position)).getDate(),
+                        ((CovidData) list.get(position)).getDataBaseId());
             }else {
                 CovidData selectedData = list.get(position);//SELECTING THE DATA AT A SPECIFIC POSITION
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
