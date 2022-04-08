@@ -28,7 +28,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center|left"
                 android:padding="8dp"
-                android:text="Country"
+                android:text="@string/country"
                 android:textSize="15sp" />
 
             <TextView
@@ -36,7 +36,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:hint="Country"
+                android:hint="@string/country"
                 android:padding="8dp"
                 android:textSize="15sp" />
 
@@ -53,7 +53,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center|left"
                 android:padding="8dp"
-                android:text="Lat Long"
+                android:text="@string/lat_lon"
                 android:textSize="15sp" />
 
             <TextView
@@ -61,7 +61,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:hint="Lat"
+                android:hint="@string/lat_lon"
                 android:padding="8dp"
                 android:textSize="15sp" />
 
@@ -78,7 +78,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center|left"
                 android:padding="8dp"
-                android:text="Cases"
+                android:text="@string/cases"
                 android:textSize="15sp" />
 
             <TextView
@@ -86,7 +86,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:hint="Cases"
+                android:hint="@string/cases"
                 android:padding="8dp"
                 android:textSize="15sp" />
 
@@ -103,7 +103,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center|left"
                 android:padding="8dp"
-                android:text="Date"
+                android:text="@string/date"
                 android:textSize="15sp" />
 
             <TextView
@@ -111,7 +111,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:hint="Date"
+                android:hint="@string/date"
                 android:padding="8dp"
                 android:textSize="15sp" />
 

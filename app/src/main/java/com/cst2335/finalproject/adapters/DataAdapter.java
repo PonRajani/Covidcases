@@ -21,7 +21,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-
+//THIS CLASS EXTENDS BASE ADAPTER
 public class DataAdapter extends BaseAdapter {
     Context context;
     List<CovidData> dataList;
@@ -34,17 +34,17 @@ public class DataAdapter extends BaseAdapter {
         this.isDatabaseValue = isDatabaseValue;
         databaseHandler = new DatabaseHandler(context);
     }
-
+    // THIS METHOD RETURNS THE DATA LIST SIZE
     @Override
     public int getCount() {
         return dataList.size();
     }
-
+    //RETURNS AN OBJECT OF AN ITEM AT POSITION I
     @Override
     public Object getItem(int i) {
         return dataList.get(i);
     }
-
+    //RETURNS THE ITEM ID
     @Override
     public long getItemId(int i) {
         return i;
@@ -75,7 +75,7 @@ public class DataAdapter extends BaseAdapter {
             @Override
             public void onClick(View view) {
                 if (databaseHandler.saveData(dataList.get(i))) {
-                    ivSave.setVisibility(View.GONE);
+                     ivSave.setVisibility(View.GONE);
                     ivDelete.setVisibility(View.VISIBLE);
                     notifyDataSetChanged();
                     Toast.makeText(context, "Data is saved", Toast.LENGTH_SHORT).show();
@@ -87,15 +87,16 @@ public class DataAdapter extends BaseAdapter {
         ivDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               // databaseHandler.deleteData(dataList.get(i));
+               // REMOVE THE DATA FROM THE DATA LIST
                 if (isDatabaseValue) {
                     dataList.remove(dataList.get(i));
                 }
+                //WHEN THE LIST IS UPDATED CALL THIS FUNCTION
                 notifyDataSetChanged();
                 Toast.makeText(context, "Data is removed", Toast.LENGTH_SHORT).show();
             }
         });
-
+//SHOWS THE DIALOG BOX WHEN ON CLICK AND RETURN THE VIEW
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -104,7 +105,7 @@ public class DataAdapter extends BaseAdapter {
         });
         return view;
     }
-
+//THIS METHOD CONVERT THE DATE AND RETURN IN TO STRING FORMAT
     public String convertDate(String time) {
         String inputPattern = "yyyy-MM-dd";
         String outputPattern = "MMM dd yyyy";
@@ -122,7 +123,7 @@ public class DataAdapter extends BaseAdapter {
             return time;
         }
     }
-
+//THIS METHOD SHOWS THE DIALOG BOX
     public void showDialog(Activity activity, CovidData data) {
         final Dialog dialog = new Dialog(activity);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);

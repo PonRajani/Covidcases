@@ -8,7 +8,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome"
+        android:text="@string/welcome"
         android:textSize="18dp"
         android:textColor="@color/black"
         />
@@ -21,7 +21,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Country"
+            android:text="@string/country"
             android:layout_weight="0.9"
             />
         <TextView
@@ -35,7 +35,7 @@
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="Enter Country name"
+            android:hint="@string/enter_country"
 />
     </LinearLayout>
     <LinearLayout
@@ -47,7 +47,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="From Date"
+            android:text="@string/from_date"
             android:layout_weight="0.9"
             />
         <TextView
@@ -61,7 +61,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/from_date_edit_text"
-            android:hint="Enter From Date"
+            android:hint="@string/enter_start_date"
 />
     </LinearLayout>
     <LinearLayout
@@ -73,7 +73,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="To Date"
+            android:text="@string/to_date"
             android:layout_weight="0.9"
             />
         <TextView
@@ -87,7 +87,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/to_date_edit_text"
-            android:hint="Enter To Date"
+            android:hint="@string/enter_to_date"
 />
     </LinearLayout>
     <RelativeLayout
@@ -97,7 +97,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Search"
+            android:text="@string/search"
             android:id="@+id/search_button"
             android:textAllCaps="false"
             android:layout_alignParentBottom="true"

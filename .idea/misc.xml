@@ -3,13 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/RaguR/AndroidStudioProjects/CovidCaseProject/app/src/main/res/layout-sw720dp/activity_search_detail.xml" value="0.128" />
         <entry key="..\:/Users/RaguR/AndroidStudioProjects/CovidCaseProject/app/src/main/res/layout/activity_main.xml" value="0.12708333333333333" />
-        <entry key="..\:/Users/RaguR/AndroidStudioProjects/CovidCaseProject/app/src/main/res/layout/activity_search_detail.xml" value="0.15307971014492755" />
+        <entry key="..\:/Users/RaguR/AndroidStudioProjects/CovidCaseProject/app/src/main/res/layout/activity_search_detail.xml" value="0.264" />
         <entry key="..\:/Users/RaguR/AndroidStudioProjects/CovidCaseProject/app/src/main/res/layout/activity_stored.xml" value="0.25" />
         <entry key="..\:/Users/RaguR/AndroidStudioProjects/CovidCaseProject/app/src/main/res/layout/covid_adapter_item_layout.xml" value="0.15307971014492755" />
         <entry key="..\:/Users/RaguR/AndroidStudioProjects/CovidCaseProject/app/src/main/res/layout/data_layout.xml" value="0.15307971014492755" />
+        <entry key="..\:/Users/RaguR/AndroidStudioProjects/CovidCaseProject/app/src/main/res/layout/dialog_custom.xml" value="0.15350877192982457" />
         <entry key="..\:/Users/RaguR/AndroidStudioProjects/CovidCaseProject/app/src/main/res/layout/fragment_result.xml" value="0.25" />
+        <entry key="..\:/Users/RaguR/AndroidStudioProjects/CovidCaseProject/app/src/main/res/layout/front_screen_layout.xml" value="0.25" />
         <entry key="..\:/Users/RaguR/AndroidStudioProjects/CovidCaseProject/app/src/main/res/layout/item_data.xml" value="0.25" />
+        <entry key="..\:/Users/RaguR/AndroidStudioProjects/CovidCaseProject/app/src/main/res/menu/menu_main.xml" value="0.1" />
+        <entry key="..\:/Users/RaguR/AndroidStudioProjects/CovidCaseProject/app/src/main/res/menu/navigation_menu.xml" value="0.25" />
+        <entry key="..\:/Users/RaguR/AndroidStudioProjects/CovidCaseProject/app/src/main/res/menu/toolbar_menu.xml" value="0.10185185185185185" />
       </map>
     </option>
   </component>

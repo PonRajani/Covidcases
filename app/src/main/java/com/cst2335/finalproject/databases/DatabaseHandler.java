@@ -12,7 +12,7 @@ import com.cst2335.finalproject.models.CovidData;
 import java.util.ArrayList;
 import java.util.List;
 
-
+//THIS CLASS EXTENDS SQLITEOPENHELPER
 public class DatabaseHandler extends SQLiteOpenHelper {
 
     public static final int DATABASE_VERSION =1 ;
@@ -51,7 +51,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-
+//CREATE THE TABLE WITH THE SPECIFIED COLUMNS
         sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_NAME + " (_id INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + COLUMN_COUNTRY + " text,"
                 + COLUMN_PROVINCE + " text,"
@@ -68,15 +68,17 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {   //Drop the old table:
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+        /*//Drop the old table:
       //  sqLiteDatabase.execSQL( "DROP TABLE IF EXISTS " + TABLE_NAME);
        // if (i != i1) {
-            // Simplest implementation is to drop all old tables and recreate them
-            sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
-            onCreate(sqLiteDatabase);
+            // Simplest implementation is to drop all old tables and recreate them*/
+
+            sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);//DROP THE TABLE IF EXIST
+            onCreate(sqLiteDatabase);//CREATE SQLITE DATABASE
        // }
     }
-        //Create the new table:
+        /*//Create the new table:
         /*public boolean saveData(CovidData data) {
             SQLiteDatabase db = this.getWritableDatabase();
             ContentValues values = new ContentValues();
@@ -97,13 +99,16 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             db.close();
             return result != -1;
         }*/
+
+    //THIS METHOD RETURN THE LIST OF DATA
     public List<CovidData> getAllData() {
-        List<CovidData> dataList = new ArrayList<CovidData>();
-        String selectQuery = "SELECT  * FROM " + TABLE_NAME;
+        List<CovidData> dataList = new ArrayList<CovidData>();//CREATE NEW LIST OBJECT
+        String selectQuery = "SELECT  * FROM " + TABLE_NAME;//SELECT ALL DATA FROM THE TABLE
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
         if (cursor.moveToFirst()) {
             do {
+                //CREATE NEW COVID DATA OBJECT
                 CovidData data = new CovidData(cursor.getString(2),cursor.getInt(3),cursor.getString(4),cursor.getString(10),
                         cursor.getString(1),cursor.getString(5),cursor.getString(6),cursor.getString(7),cursor.getString(9),
                         cursor.getString(11),cursor.getString(8));
@@ -117,16 +122,17 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 data.setProvince(cursor.getString(7));
                 data.setLon(cursor.getString(8));
                 data.setCases(cursor.getInt(9));*/
-                dataList.add(data);
+                dataList.add(data);//ADD THE DATA IN TO DATA LIST
             } while (cursor.moveToNext());
         }
-        return dataList;
+        return dataList;//RETURN THE LIST OF DATA
     }
     @Override
-    public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion)  {   //Drop the old table:
+    public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion)  {
+        //DROP THE OLD TABLE
         db.execSQL( "DROP TABLE IF EXISTS " + TABLE_NAME);
 
-        //Create the new table:
+        //CREATE DB
         onCreate(db);
     }
 }
