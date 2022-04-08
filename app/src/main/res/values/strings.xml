@@ -4,4 +4,29 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="open"> Open</string>
     <string name="close">Close</string>
+    <string name="welcome">Welcome</string>
+    <string name="country">Country</string>
+    <string name="enter_country">Enter Country name</string>
+    <string name="enter_start_date">Enter Start date</string>
+    <string name="enter_to_date">Enter To date</string>
+    <string name="from_date">From date</string>
+    <string name="to_date">To date</string>
+    <string name="search">Search</string>
+    <string name="view_history">View History</string>
+    <string name="help_dialog_title">Information for user</string>
+    <string name="help_dialog_message">Please enter the country name and the date in the form of YYYY_MM_DD then hit search</string>
+    <string name="lat_lon">Lat Long</string>
+    <string name="date">Date</string>
+    <string name="cases">Cases</string>
+    <string name="home">Home</string>
+    <string name="save">save</string>
+    <string name="help">Help</string>
+    <string name="additional_details_msg">Additional Details of Selected Row:</string>
+    <string name="the_province_is">The province is :</string>
+    <string name="the_case_number_is">The Confirmed Case Number :</string>
+    <string name="the_date_is">The date is :</string>
+    <string name="the_database_is">The database id is</string>
+    <string name="okay">Okay</string>
+
+
 </resources>

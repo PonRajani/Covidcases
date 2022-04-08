@@ -17,7 +17,11 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
+import com.cst2335.finalproject.Fragments.ResultFragment;
 import com.cst2335.finalproject.R;
 import com.cst2335.finalproject.databases.DatabaseHandler;
 import com.cst2335.finalproject.models.CovidData;
@@ -31,8 +35,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-
+// THIS SEARCH DETAIL ACTIVITY CLASS EXTENDS APP COMPAT ACTIVITY
 public class SearchDetailActivity extends AppCompatActivity {
+    //DECLARATIONS
     TextView country,fromDate, toDate;
     private ArrayList<CovidData> list  = new ArrayList<>();
     CovidDataAdaptor covidDataAdaptor;
@@ -40,40 +45,50 @@ public class SearchDetailActivity extends AppCompatActivity {
     ProgressBar progressBar;
     ListView searchdetail_listview;
     Button view_history_button;
+    Boolean framelayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search_detail);
+        super.onCreate(savedInstanceState);//CALLED WHEN THE ACTIVITY IS STARTED
+        setContentView(R.layout.activity_search_detail);//SET THE LAYOUT VIEW FOR ACTIVITY SEARCH DETAIL
 
-        country=findViewById(R.id.country_textview);
-        fromDate=findViewById(R.id.from_date_textview);
-        toDate=findViewById(R.id.to_date_textview);
-        progressBar = findViewById(R.id.progressBar);
-        searchdetail_listview = findViewById(R.id.search_details_list_view);
-        view_history_button = findViewById(R.id.view_history_button);
+        country=findViewById(R.id.country_textview);//FIND VIEW BY COUNTRY ID
+        fromDate=findViewById(R.id.from_date_textview);//FIND VIEW BY FROM DATE ID
+        toDate=findViewById(R.id.to_date_textview);//FIND VIEW BY TO DATE TEXTVIEW ID
+        progressBar = findViewById(R.id.progressBar);//FIND VIEW BY PROGRESS BAR ID
+        searchdetail_listview = findViewById(R.id.search_details_list_view);//FIND VIEW BY SEARCH DETAILS LIST VIEW ID
+        view_history_button = findViewById(R.id.view_history_button);//FIND VIEW BY VIEW HISTORY BUTTON ID
 
-        // Get the 3 data through intent then set into default text view on this activity
+        //GET DATA VIA INTENT
         country.setText(getIntent().getStringExtra("country"));
         toDate.setText(getIntent().getStringExtra("toDate"));
         fromDate.setText(getIntent().getStringExtra("fromDate"));
 
-//Long click for list view
+        framelayout = findViewById(R.id.framelayout) != null;//FIND THE VIEW BY ID FOR FRAME LAYOUT
+
+//LONG CLICK FUNCTIONALITY FOR AN ITEM CLICKED
         searchdetail_listview.setOnItemLongClickListener((parent, view, position, id) -> {
-            CovidData selectedData = list.get(position);
-            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-            alertDialogBuilder.setTitle("Additional Details of Selected Row:")
-
-                    .setMessage("The province is :"+((CovidData)list.get(position)).getProvince()+"\n"+
-                            "The Confirmed Case Number :"+((CovidData)list.get(position)).getCaseNumber()+"\n"+
-                            "The date is :"+((CovidData)list.get(position)).getDate().substring(0,10)+"\n"+
-                            "The database id is"+((CovidData)list.get(position)).getDataBaseId())
-                    .setNeutralButton("Okay",(click, arg)->{})
-                    .create().show();
-
+            if (framelayout){
+                LoadFragment(new ResultFragment(),((CovidData) list.get(position)).getProvince(),String.valueOf(((CovidData) list.get(position)).getGetCases()),
+                        ((CovidData) list.get(position)).getDate(),((CovidData) list.get(position)).getDataBaseId());
+            }else {
+                CovidData selectedData = list.get(position);//SELECTING THE DATA AT A SPECIFIC POSITION
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+                Log.e("string", "-->" + this.getString(R.string.additional_details_msg));
+                alertDialogBuilder.setTitle(R.string.additional_details_msg)//SET THE TITLE FOR ALERT DIALOG
+//DETAIL OF THE CLICKED ITEM
+                        .setMessage(this.getString(R.string.the_province_is) + " " + ((CovidData) list.get(position)).getProvince() + "\n" +
+                                this.getString(R.string.the_case_number_is) + " " + ((CovidData) list.get(position)).getCaseNumber() + "\n" +
+                                this.getString(R.string.the_date_is) + " " + ((CovidData) list.get(position)).getDate().substring(0, 10) + "\n" +
+                                this.getString(R.string.the_database_is) + " " + ((CovidData) list.get(position)).getDataBaseId())
+                        .setNeutralButton(R.string.okay, (click, arg) -> {
+                        })
+                        .create().show();
+            }
             return true;
         });
-//view history button on click got to stored activity
+//FUNCTIONALITY FOR WHEN WE CLICK VIEW HISTORY
+
         view_history_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -84,7 +99,7 @@ public class SearchDetailActivity extends AppCompatActivity {
             }
         });
 
-
+//CREATE NEW QUERY FOR COVIDDATAQUERY OBJECT
         CovidDataQuery cdq = new CovidDataQuery();
         cdq.execute("https://api.covid19api.com/country/"+country.getText().toString().trim().toUpperCase()+"/status/confirmed/live?from="+fromDate.getText().toString().trim()+"T00:00:00Z&to="+toDate.getText().toString().trim()+"T00:00:00Z");
         searchdetail_listview.setAdapter(covidDataAdaptor= new CovidDataAdaptor());
@@ -95,19 +110,18 @@ public class SearchDetailActivity extends AppCompatActivity {
         db = dbOpener.getWritableDatabase();
 
     }
-
+//THIS CLASS EXTENDS ASYNCTASK
     private class CovidDataQuery extends AsyncTask< String, Integer, String> {
-        // do the task in background
+        // DO THE TASK IN BACK GROUND
         public String doInBackground(String... args)
         {
             try {
-                //encode the string url; may need to be commented later
-                // String encodeURL = URLEncoder.encode(args[0], "UTF-8");
-                //create a URL object of what server to contact:
+                //ENCODE THE STRING URL;
+                //CREATE URL OBJECT OF WHAT SERVER TO CONTACT
                 URL covid_api_url = new URL(args[0]);
-                //open the connection
+                //OPEN THE CONNECTION
                 HttpURLConnection connection = (HttpURLConnection) covid_api_url.openConnection();
-                //wait for data:
+                //WAITING FOR THE DATA
                 InputStream inputStream = connection.getInputStream();
                 BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"), 8);
                 Thread.sleep(500); // sleep for 500 milli seconds
@@ -146,9 +160,9 @@ public class SearchDetailActivity extends AppCompatActivity {
                         CovidData covidData = new CovidData(province, caseNumber,String.valueOf(databaseid),date,
                                 Country,CityCode,Status,Lon,City,CountryCode,Lat);
 
-                        //get the data one by one and add into list
+                        //GET THE DATA ONE BY ONE ADDING INTO LIST
                         list.add(covidData);
-                        //Store the data into sql data base
+                        //STORE THE DATA IN TO SQL DATA BASE
                         ContentValues newRowValue = new ContentValues();
                         newRowValue.put(DatabaseHandler.COLUMN_COUNTRY, Country);
                         newRowValue.put(DatabaseHandler.COLUMN_PROVINCE, province);
@@ -162,12 +176,12 @@ public class SearchDetailActivity extends AppCompatActivity {
                         newRowValue.put(DatabaseHandler.COLUMN_DATE, date);
                         newRowValue.put(DatabaseHandler.COLUMN_LAT, Lat);
 
-                        //Now insert in the database:
+                        //INSERT INTO DATABASE
                         long newId = db.insert(DatabaseHandler.TABLE_NAME, null, newRowValue);
                     }
                 }
-                Thread.sleep(500); // sleep for 500 milli seconds
-                publishProgress(100);  // set the progressbar value
+                Thread.sleep(500); // SLEEP FOR 500MILLI SECONDS
+                publishProgress(100);  // SET THE PROGRESS BAR VALUE.
             }
             catch (Exception e)
             {
@@ -175,16 +189,16 @@ public class SearchDetailActivity extends AppCompatActivity {
             return "Done";
         }
 
-        // onProgressUpdate method, it sets the progress bar visibility to true and set the value
+        // ON PROGRESS UPDATE METHOD SETS THE PROGRESS BAR VISIBILITY TRUE AND  SET THE VALUE.
         public void onProgressUpdate(Integer... args)
         {
             progressBar.setVisibility(View.VISIBLE);
             progressBar.setProgress(args[0]);
         }
 
-        // this method will be executed at the end of the task
-        // this will set the progress bar to invisible
-        // and notify the data change
+        // THIS METHOD WILL BE EXECUTED AT THE END OF THE TASK
+        // THIS WILL SET THE PROGRESS BAR TO IN VISIBLE
+        // AND NOTIFY THE CHANGED DATA
         public void onPostExecute(String fromDoInBackground)
         {
             Log.i("CovidDataQuery ", fromDoInBackground);
@@ -194,7 +208,7 @@ public class SearchDetailActivity extends AppCompatActivity {
 
         }
     }
-
+//THIS COVIDDATAADAPTOR CLASS EXTENDS THE BASEADAPTER
     private class CovidDataAdaptor extends BaseAdapter {
 
         @Override
@@ -202,13 +216,13 @@ public class SearchDetailActivity extends AppCompatActivity {
             return list.size();
         }
 
-        // return the object from the list based on the position
+        //RETURN THE OBJECT FROM THE LIST BASED ON THE POSITION
         @Override
         public CovidData getItem(int position) {
             return list.get(position);
         }
 
-        // create the view for CovidData
+        // GET VIEW FOR COVID DATA
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             LayoutInflater inflater =getLayoutInflater();
@@ -223,12 +237,26 @@ public class SearchDetailActivity extends AppCompatActivity {
             return newView;
         }
 
-        // get the database id of the system
+        // GET THE ITEM ID
         @Override
         public long getItemId(int position) {
             return Long.parseLong(getItem(position).getDataBaseId());
         }
 
 
+    }
+//LOAD THE FRAGMENT
+    protected void LoadFragment(Fragment fragment, String provice, String cases, String date,String databaseid) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction =
+                fragmentManager.beginTransaction();
+        Bundle bundle = new Bundle();
+        bundle.putString("province",provice);
+        bundle.putString("cases",cases);
+        bundle.putString("date",date);
+        bundle.putString("databaseid",databaseid);
+        fragment.setArguments(bundle);
+        fragmentTransaction.replace(R.id.framelayout, fragment);
+        fragmentTransaction.commit();
     }
 }

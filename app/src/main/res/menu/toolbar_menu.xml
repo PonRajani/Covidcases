@@ -2,23 +2,23 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 <item android:id="@+id/home_icon"
-    android:title="Home"
+    android:title="@string/home"
     android:icon="@drawable/home_icon"
     app:showAsAction="always"
     />
 
     <item android:id="@+id/help_icon"
-        android:title="Help"
+        android:title="@string/help"
         android:icon="@drawable/help_icon"
         app:showAsAction="always"
         />
     <item android:id="@+id/search_icon"
-        android:title="Search"
+        android:title="@string/search"
         android:icon="@drawable/search_icon"
         app:showAsAction="never"
         />
     <item android:id="@+id/view_history_icon"
-        android:title="View History"
+        android:title="@string/view_history"
         android:icon="@drawable/view_history_icon"
         app:showAsAction="never"
         />

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FinalProject</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="open"> ouvrir</string>
+    <string name="close">fermer</string>
+    <string name="welcome">Bienvenue</string>
+    <string name="country">Pays</string>
+    <string name="from_date">À partir de la date</string>
+    <string name="to_date">À ce jour</string>
+    <string name="search">rechercher</string>
+    <string name="enter_country">Entrez le nom du pays</string>
+    <string name="enter_start_date">Entrez la date de début</string>
+    <string name="enter_to_date">Entrer À la date</string>
+    <string name="view_history">afficher l’historique</string>
+    <string name="help_dialog_title">Informations pour l’utilisateur</string>
+    <string name="help_dialog_message">Veuillez entrer le nom du pays et la date sous la forme d’YYYY_MM_DD puis appuyez sur Rechercher</string>
+    <string name="lat_lon">Lat Long</string>
+    <string name="date">Date</string>
+    <string name="cases">Cas</string>
+    <string name="home">domicile</string>
+    <string name="save">sauvegarder</string>
+    <string name="help">Aide</string>
+    <string name="additional_details_msg">Détails supplémentaires de la ligne sélectionnée :</string>
+    <string name="the_province_is">La province est :</string>
+    <string name="the_case_number_is">Le numéro de cas confirmé :</string>
+    <string name="the_date_is">La date est :</string>
+    <string name="the_database_is">L’ID de la base de données est</string>
+    <string name="okay">D’accord</string>
+
+</resources>
