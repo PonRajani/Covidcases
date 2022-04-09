@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         //SWITCH STATEMENT FOR SELECTING TOOL BAR HOME,SEARCH,HELP
         switch (item.getItemId())
         {
+
             case R.id.home_icon:
                 Intent intent=new Intent(this,MainActivity.class);
                 startActivity(intent);
