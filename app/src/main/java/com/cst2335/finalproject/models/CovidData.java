@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class CovidData {
-//VARIABLE DECLARATIONS
+
     String province;
     int caseNumber;
     String date;
@@ -43,7 +43,7 @@ public class CovidData {
             return new CovidData[size];
         }
     };*/
-//INITIALIZINTHE VARIABLE
+
     public CovidData(String province, int caseNumber, String dataBaseId, String date, String country,
                      String citycode, String status, String lon, String countycode, String lat, String city)
     {
@@ -175,8 +175,7 @@ public class CovidData {
                         ",date = '" + date + '\'' +
                         "}";
     }
-    */
-/*@Override
+    *//*@Override
         public int describeContents() {
             return 0;
         }
@@ -193,132 +192,107 @@ public class CovidData {
             parcel.writeInt(caseNumber);
             parcel.writeString(date);
         }*/
-    //GET METHOD FOR PROVINCE RETURNS PROVINCE NAME
+
     public String getProvince() {
         return province;
     }
 
-    //SET METHOD FOR PROVINCE
     public void setProvince(String province) {
         this.province = province;
     }
 
-   //GET METHOD FOR CASE NUMBER RETURNS CASE NUMBER
     public int getCaseNumber() {
         return caseNumber;
     }
 
-   //SET METHOD FOR CASE NUMBER
     public void setCaseNumber(int caseNumber) {
         this.caseNumber = caseNumber;
     }
 
-   //GET METHOD FOR DATE RETURNS DATE
     public String getDate() {
         return date;
     }
 
-    //SET METHOD FOR DATE
     public void setDate(String date) {
         this.date = date;
     }
 
-    //GET METHOD FOR COUNTRY RETURNS COUNTRY
     public String getCountry() {
         return country;
     }
 
-    //SET METHOD FOR COUNTRY
     public void setCountry(String country) {
         this.country = country;
     }
 
-    //GET METHOD FOR DATA BASE ID RETURNS DATA BASE ID
     public String getDataBaseId() {
         return dataBaseId;
     }
 
-    //SET METHOD FOR DATA BASE ID
     public void setDataBaseId(String dataBaseId) {
         this.dataBaseId = dataBaseId;
     }
 
-    //GET METHOD FOR CITY CODE RETURNS CITY CODE
     public String getCitycode() {
         return citycode;
     }
 
-    //SET THE CITY CODE
     public void setCitycode(String citycode) {
         this.citycode = citycode;
     }
 
-    //GET METHOD FOR STATUS RETURN THE STATUS
     public String getStatus() {
         return status;
     }
 
-    //SET METHOD FOR STATUS
     public void setStatus(String status) {
         this.status = status;
     }
 
-    //GET METHOD FOR LONGITUDE RETURNS LONGITUDE
     public String getLon() {
         return lon;
     }
 
-    //SET METHOD FOR LONGITUDE
     public void setLon(String lon) {
         this.lon = lon;
     }
 
-    //GET METHOD FOR CITY RETURN THE CITY
     public String getCity() {
         return city;
     }
 
-    //SET METHOD FOR CITY
     public void setCity(String city) {
         this.city = city;
     }
 
-    //GET METHOD FOR COUNTRY CODE RETURNS TH COUNTRY CODE
     public String getCountryCode() {
         return countryCode;
     }
 
-    //SET METHOD FOR COUNTRY CODE
     public void setCountryCode(String countryCode) {
         this.countryCode = countryCode;
     }
 
-    //GET METHOD FOR LATITUDE RETURNS THE LATITUDE
     public String getLat() {
         return lat;
     }
 
-    //SET METHOD FOR LATITUDE
     public void setLat(String lat) {
         this.lat = lat;
     }
 
-    //GET METHOD FOR SET CASES
     public int getSetcases() {
         return setcases;
     }
 
-    //SET METHOD FOR SET CASES
     public void setSetcases(int setcases) {
         this.setcases = setcases;
     }
 
-    //GET METHOD FOR GET CASES
     public int getGetCases() {
         return getCases;
     }
 
-    //SET METHOD FOR GET CASES
     public void setGetCases(int getCases) {
         this.getCases = getCases;
     }
